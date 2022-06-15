@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.container{
+    width: 1140px;
+    margin: 0 auto;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+}
+.main__title{
+    font-weight: 700;
+    font-size: 36px;
+    line-height: 60px;
+    text-align: center;
+}
+// span{
+//     font-weight: 700;
+//     font-size: 24px;
+//     line-height: 35px;
+//     margin-bottom: 100px;
+// }
+.text{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    &_pl{
+        margin-left: 25px;
+        margin-top: 10px;
+    }
+}
+ol {
+    /* убираем стандартную нумерацию */
+    list-style: none;
+    /* Идентифицируем счетчик и даем ему имя li. Значение счетчика не указано - по умолчанию оно равно 0 */
+    counter-reset: li;
+    li{
+        margin-bottom: 5px;
+    }
+    li:before {
+        /* Определяем элемент, который будет нумероваться — li. Псевдоэлемент before указывает, что содержимое, вставляемое при помощи свойства content, будет располагаться перед пунктами списка. Здесь же устанавливается значение приращения счетчика (по умолчанию равно 1). */
+        counter-increment: li;
+        /* С помощью свойства content выводится номер пункта списка. counters() означает, что генерируемый текст представляет собой значения всех счетчиков с таким именем. Точка в кавычках добавляет разделяющую точку между цифрами, а точка с пробелом добавляется перед содержимым каждого пункта списка */
+        content: counters(li, ".") ". ";
+        font-size: 16px;
+    }
+    li span{
+        margin-bottom: 50px;
+    }
+}
+ol ul{
+    counter-increment: list2;
+}
+
+ol ul li:before {
+ counter-increment: list2; /* Увеличиваем значение счетчика вложенного списка */
+}
+li:last-child{
+    margin-bottom: 20px;
+}
+.special{
+    list-style: none;
+    &-list{
+        position: relative;
+        &:before{
+        content:'';
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 7px;
+        height: 1px;
+        background-color: #000;
+        }
+    }
+}
+
+ol li:not(first-child){
+    padding-left: 25px;
+}
